@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Teachers' Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fbeee0;--ink:#3b2a20;--board:#1f3a34;--chalk:#f3efe4;--apple:#d6402f;--pencil:#f2c230;--wood:#a9784a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#2a1f19;--ink:#f5e6d6}}
+:root[data-theme="dark"]{--paper:#2a1f19;--ink:#f5e6d6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0;overflow:hidden;background:var(--paper);color:var(--ink);font-family:'Caveat','Segoe Script',cursive;touch-action:none;-webkit-user-select:none;user-select:none}
+.scene{position:absolute;inset:0}
+#s1 p{position:absolute;left:0;right:0;margin:0;text-align:center;font-size:clamp(24px,6vw,36px);font-weight:500}
+#s1 .top{top:9%}
+#s1 .hint{bottom:8%;font-size:clamp(20px,5vw,28px);opacity:.75;transition:opacity .5s}
+#s1.went .hint{opacity:0}
+#rig{position:absolute;inset:0;width:100%;height:100%}
+#apple{position:absolute;left:0;top:0;width:84px;height:84px;cursor:grab;touch-action:none;will-change:transform}
+#apple:active{cursor:grabbing}
+#apple i{position:absolute;inset:8px 2px 0;border-radius:48% 48% 46% 46%;background:radial-gradient(circle at 34% 30%,#f0705c,var(--apple) 55%,#9e2a1d)}
+#apple b{position:absolute;left:40px;top:0;width:4px;height:16px;background:#5a3a22;border-radius:2px;transform:rotate(12deg)}
+#apple em{position:absolute;left:44px;top:4px;width:24px;height:13px;background:#6fa66a;border-radius:0 100% 0 100%;transform:rotate(-14deg)}
+#s2{display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 30%,#2c4f46,var(--board) 70%);color:var(--chalk);visibility:hidden;clip-path:circle(0 at 50% 50%);
+box-shadow:inset 0 0 0 10px var(--wood),inset 0 0 70px rgba(0,0,0,.4);transition:clip-path 1.1s cubic-bezier(.6,0,.2,1)}
+#s2 .txt{flex:none;position:relative;z-index:2;padding:max(6vh,28px) 8% 0;text-align:center}
+.small{font-size:clamp(22px,5vw,32px);line-height:1.15;margin:0;opacity:0;transition:opacity 1s}
+h1{font:italic 600 clamp(46px,14vw,112px)/1.12 'Fraunces',Georgia,serif;margin:10px 0 0;text-shadow:0 0 1px var(--chalk),2px 3px 0 rgba(0,0,0,.25);clip-path:inset(-15% 100% -35% -10%);padding:0 .12em .1em 0}
+#s2.in h1{animation:write 1.8s .5s cubic-bezier(.5,0,.3,1) forwards}
+#s2.in .a{opacity:.9}
+#s2.in .b{opacity:.9;transition-delay:2.4s}
+@keyframes write{to{clip-path:inset(-15% -15% -35% -10%)}}
+.ul{display:block;width:min(70%,420px);height:18px;margin:6px auto 0}
+.ul path{fill:none;stroke:var(--pencil);stroke-width:5;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420}
+#s2.in .ul path{animation:draw 1s 2.2s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#cap{min-height:2.4em}
+#treebox{flex:1 1 0;min-height:0;position:relative;margin-bottom:64px;z-index:1}
+#tree{position:absolute;inset:0;width:100%;height:100%;display:block}
+#again{position:absolute;right:26px;bottom:24px;font:700 22px 'Caveat',cursive;color:var(--chalk);background:none;border:2px solid var(--chalk);border-radius:99px;padding:2px 16px;opacity:0;pointer-events:none;transition:opacity .8s;cursor:pointer}
+#again:focus-visible,#apple:focus-visible{outline:3px solid var(--pencil);outline-offset:4px}
+#s2.done #again{opacity:.85;pointer-events:auto}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media (prefers-reduced-motion:reduce){#s2,#s2 *{transition-duration:.01s!important;animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+</head>
+<body>
+<section class="scene" id="s1">
+  <p class="top">a little something, for you</p>
+  <svg id="rig" aria-hidden="true">
+    <path id="fork" fill="none" stroke="#a9784a" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <line id="bl" stroke="var(--ink)" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+    <line id="br" stroke="var(--ink)" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <div id="apple" tabindex="0" role="button" aria-label="Apple. Drag down and release to launch, or press Enter"><i></i><b></b><em></em></div>
+  <p class="hint">pull the apple back, then let go</p>
+</section>
+
+<section class="scene" id="s2" aria-live="polite">
+  <div class="txt">
+    <p class="small a" id="to"></p>
+    <h1>Happy Teachers' Day</h1>
+    <svg class="ul" viewBox="0 0 420 18" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12 C90 3 200 15 300 7 S400 8 416 6"/></svg>
+    <p class="small b" id="cap" style="margin-top:14px">thank you for every "try again."</p>
+  </div>
+  <div id="treebox"><canvas id="tree"></canvas></div>
+  <button id="again" type="button">pull again</button>
+</section>
+<canvas id="fx"></canvas>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)};
+var apple=$('#apple'),s1=$('#s1'),s2=$('#s2'),fx=$('#fx'),fc=fx.getContext('2d'),tc=$('#tree'),tx=tc.getContext('2d');
+var dpr=Math.min(window.devicePixelRatio||1,2);
+var name=''; try{name=(new URLSearchParams(location.search).get('to')||'').slice(0,40)}catch(e){}
+$('#to').textContent=name?('for '+name):'for every teacher who believed in us';
+
+var A={x:0,y:0},P={x:0,y:0},drag=false,busy=false,parts=[],partRaf=0;
+function place(x,y){P.x=x;P.y=y;apple.style.transform='translate('+(x-42)+'px,'+(y-42)+'px)';
+  var l=$('#bl'),r=$('#br');
+  l.setAttribute('x1',A.x-70);l.setAttribute('y1',A.y-8);l.setAttribute('x2',x-26);l.setAttribute('y2',y+4);
+  r.setAttribute('x1',A.x+70);r.setAttribute('y1',A.y-8);r.setAttribute('x2',x+26);r.setAttribute('y2',y+4)}
+function layout(){A.x=innerWidth/2;A.y=innerHeight*.5;
+  $('#fork').setAttribute('d','M'+A.x+' '+(A.y+250)+' L'+A.x+' '+(A.y+95)+' M'+A.x+' '+(A.y+95)+' L'+(A.x-70)+' '+(A.y-8)+' M'+A.x+' '+(A.y+95)+' L'+(A.x+70)+' '+(A.y-8));
+  fx.width=innerWidth*dpr;fx.height=innerHeight*dpr;fc.setTransform(dpr,0,0,dpr,0,0);
+  if(!busy)place(A.x,A.y)}
+addEventListener('resize',layout);layout();
+
+apple.addEventListener('pointerdown',function(e){if(busy)return;drag=true;apple.setPointerCapture(e.pointerId);s1.classList.add('went')});
+apple.addEventListener('pointermove',function(e){if(!drag)return;
+  var dx=e.clientX-A.x,dy=e.clientY-A.y,d=Math.hypot(dx,dy),m=130;if(d>m){dx*=m/d;dy*=m/d}
+  place(A.x+dx,A.y+dy)});
+function release(){if(!drag)return;drag=false;
+  var dx=A.x-P.x,dy=A.y-P.y;
+  if(Math.hypot(dx,dy)<40||dy>-10){snap();return}
+  launch(dx*.24,dy*.24)}
+apple.addEventListener('pointerup',release);apple.addEventListener('pointercancel',release);
+apple.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&!busy){e.preventDefault();s1.classList.add('went');place(A.x,A.y+110);launch(0,-24)}});
+function snap(){var t=0;(function f(){t+=.14;place(P.x+(A.x-P.x)*t,P.y+(A.y-P.y)*t);if(t<1)requestAnimationFrame(f)})()}
+
+function launch(vx,vy){busy=true;
+  (function f(){place(P.x+vx,P.y+vy);vy+=.55;
+    if(vy>=-1||P.y<70||P.x<0||P.x>innerWidth){apple.style.display='none';burst(P.x,P.y);reveal(P.x,P.y);return}
+    requestAnimationFrame(f)})()}
+
+function burst(x,y){var c=['#f3efe4','#f3efe4','#f2c230','#d6402f','#8fc18a'];
+  for(var i=0;i<110;i++){var a=Math.random()*6.283,s=2+Math.random()*7;
+    parts.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2,r:1.5+Math.random()*3.5,c:c[i%5],l:1,star:i%7===0})}
+  if(!partRaf)partRaf=requestAnimationFrame(stepParts)}
+function stepParts(){fc.clearRect(0,0,innerWidth,innerHeight);
+  parts=parts.filter(function(p){return p.l>0});
+  parts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.12;p.vx*=.985;p.l-=.011;
+    fc.globalAlpha=Math.max(p.l,0);fc.fillStyle=p.c;fc.beginPath();
+    if(p.star){fc.save();fc.translate(p.x,p.y);fc.rotate(p.l*8);fc.fillRect(-p.r,-1,p.r*2.4,2);fc.fillRect(-1,-p.r,2,p.r*2.4);fc.restore()}
+    else{fc.arc(p.x,p.y,p.r,0,6.283);fc.fill()}});
+  fc.globalAlpha=1;
+  if(parts.length)partRaf=requestAnimationFrame(stepParts);else{partRaf=0;fc.clearRect(0,0,innerWidth,innerHeight)}}
+
+function reveal(x,y){s2.style.visibility='visible';s2.style.transition='none';
+  s2.style.clipPath='circle(0px at '+x+'px '+y+'px)';void s2.offsetWidth;
+  s2.style.transition='';s2.style.clipPath='circle(150vmax at '+x+'px '+y+'px)';
+  setTimeout(function(){s2.classList.add('in')},500);
+  setTimeout(growTree,2000);
+  setTimeout(function(){s2.classList.add('done')},6800)}
+
+/* heart tree */
+var W=0,H=0,items=[],trunk=null,tr=0,t0=0,dN=0,dT=0,brDone=false,TR_MS=1400,BL_MS=3600;
+var PAL=['#f48fb1','#f06292','#ff8a80','#ffab91','#f8bbd0','#ffcc80','#ec407a','#f8bbd0'];
+function hrt(x,y,z,r){tx.save();tx.translate(x,y);tx.rotate(r);tx.beginPath();tx.moveTo(0,z*.35);
+  tx.bezierCurveTo(-z*.1,z*.2,-z*.5,z*.05,-z*.5,-z*.22);tx.bezierCurveTo(-z*.5,-z*.5,-z*.1,-z*.55,0,-z*.25);
+  tx.bezierCurveTo(z*.1,-z*.55,z*.5,-z*.5,z*.5,-z*.22);tx.bezierCurveTo(z*.5,z*.05,z*.1,z*.2,0,z*.35);tx.fill();tx.restore()}
+function tpt(f){return{x:trunk.x+Math.sin(f*3.2)*trunk.u*.06,y:trunk.y0+(trunk.y1-trunk.y0)*f}}
+function build(){
+  W=tc.clientWidth;H=tc.clientHeight;tc.width=W*dpr;tc.height=H*dpr;tx.setTransform(dpr,0,0,dpr,0,0);tx.clearRect(0,0,W,H);
+  items=[];trunk=null;dN=0;dT=0;brDone=false;
+  if(H<60||W<60)return;
+  var trunkH=H*.24,unit=Math.min(W*.86/2.3,(H-trunkH-10)/2.5),tipY=H-trunkH,cy=tipY-1.05*unit,cx=W/2;
+  trunk={x:cx,y0:H+2,y1:tipY-unit*.25,u:unit};
+  var N=Math.round(Math.min(560,Math.max(220,unit*unit/25)));
+  while(items.length<N){
+    var x=Math.random()*2.4-1.2,y=Math.random()*2.45-1.1,q=x*x+y*y-1;
+    if(q*q*q-x*x*y*y*y>0)continue;
+    items.push({x:cx+x*unit,y:cy-y*unit,z:unit*(.11+Math.random()*.09),r:(Math.random()-.5)*1.1,c:PAL[Math.floor(Math.random()*PAL.length)],k:Math.hypot(x,y-.15)+Math.random()*.5});
+  }
+  items.sort(function(a,b){return a.k-b.k});
+}
+function growTree(){build();if(!trunk)return;t0=performance.now();cancelAnimationFrame(tr);tr=requestAnimationFrame(stepTree)}
+function drawTrunk(p){
+  var n=Math.floor(p*30);tx.lineCap='round';tx.strokeStyle='#8d5b3d';
+  for(;dT<n;dT++){var f0=dT/30,f1=(dT+1)/30,a=tpt(f0),b=tpt(f1);
+    tx.lineWidth=trunk.u*(.3-.16*f1);tx.beginPath();tx.moveTo(a.x,a.y);tx.lineTo(b.x,b.y);tx.stroke()}
+  if(p>=1&&!brDone){brDone=true;var t=tpt(1),u=trunk.u;tx.lineWidth=u*.09;
+    [-1,1].forEach(function(d){tx.beginPath();tx.moveTo(t.x,t.y);tx.quadraticCurveTo(t.x+d*u*.15,t.y-u*.3,t.x+d*u*.5,t.y-u*.55);tx.stroke()})}
+}
+function stepTree(now){
+  var e=now-t0;drawTrunk(Math.min(e/TR_MS,1));
+  var pB=Math.max(0,Math.min((e-TR_MS*.7)/BL_MS,1)),n=Math.floor(pB*items.length);
+  for(;dN<n;dN++){var it=items[dN];tx.fillStyle=it.c;hrt(it.x,it.y,it.z,it.r)}
+  if(pB<1)tr=requestAnimationFrame(stepTree);
+  else{$('#cap').textContent='all of this bloomed from something you taught us.'}
+}
+
+$('#again').addEventListener('click',function(){
+  cancelAnimationFrame(tr);tx.clearRect(0,0,W,H);
+  s2.classList.remove('in','done');s2.style.visibility='hidden';s2.style.clipPath='circle(0 at 50% 50%)';
+  $('#cap').textContent='thank you for every "try again."';
+  apple.style.display='';s1.classList.remove('went');busy=false;place(A.x,A.y+60);snap()});
+})();
+</script>
+</body>
+</html>
